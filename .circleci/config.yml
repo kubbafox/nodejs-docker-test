@@ -31,23 +31,7 @@ jobs:
       # run tests!
       - run: npm run build
 
-  pre-test:
-    steps:
       - run: npm run pretest
 
-  e2e-test:
-    steps:
-        - run: npm run startTest
+      - run: npm run startTest
 
-workflows:
-  version: 2
-  e2e_test_pipeline:
-    jobs:
-      - build
-      - pre-test:
-          requires:
-            - build
-      - e2e-test:
-          requires:
-            - build
-            - pre-test
