@@ -45,7 +45,7 @@ workflows:
   version: 2
   build_pipeline:
     jobs:
-      - build
+      - build:
       - pre-test:
           requires:
             - build
