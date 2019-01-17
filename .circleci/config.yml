@@ -31,7 +31,9 @@ jobs:
       # run tests!
       - run: npm run build
 
-      - run: npm run pretest
+      - run:
+          name: start selenium server
+          command: npm run pretest
           background: true
 
       - run: npm run startTest
