@@ -34,7 +34,12 @@ jobs:
       - run:
           name: start selenium server
           command: npm run pretest
-          no_output_timeout: 10s
+
+      - run:
+          shell: /bin/sh
+          command: |
+            wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:4444
+            :
 
       - run: npm run startTest
 
