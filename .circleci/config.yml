@@ -51,5 +51,5 @@ workflows:
             - build
       - e2e-test:
           requires:
-            - setup
+            - build
             - pre-test
