@@ -34,7 +34,7 @@ jobs:
       - run:
           name: start selenium server
           command: npm run pretest
-          background: true
+          no_output_timeout: 10s
 
       - run: npm run startTest
 
