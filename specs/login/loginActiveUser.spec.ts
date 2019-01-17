@@ -8,7 +8,6 @@ describe('Login - Active User', () => {
 
     it('should sign in with valid ssn/dob and land to dashboard page', () => {
 
-        browser.wait(EC.urlContains('dashboard'), 2000);
     });
 
 });

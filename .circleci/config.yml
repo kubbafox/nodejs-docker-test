@@ -21,28 +21,32 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: npm install
+      - run:
+          name: Install NPM Dependencies
+          command: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run build
+      - run:
+          name: Build Project
+          command: npm run build
 
       - run:
-          name: start selenium server
+          name: Start Selenium Server
           command: npm run pretest
           background: true
 
       - run:
-          name: check selenium server
+          name: Check Selenium Server
           shell: /bin/sh
           command: |
             wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:4444
             :
 
       - run:
-          name: run E2E test
+          name: Run E2E Test
           command: npm run startTest
 
