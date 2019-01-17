@@ -28,7 +28,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
       - run: npm run build
 
       - run:
@@ -37,10 +36,13 @@ jobs:
           background: true
 
       - run:
+          name: check selenium server
           shell: /bin/sh
           command: |
             wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:4444
             :
 
-      - run: npm run startTest
+      - run:
+          name: run E2E test
+          command: npm run startTest
 
