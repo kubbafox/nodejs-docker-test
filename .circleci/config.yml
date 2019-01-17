@@ -32,10 +32,12 @@ jobs:
       - run: npm run build
 
   pre-test:
+    steps:
       - run: npm run pretest
 
   e2e-test:
-      - run: npm run startTest
+    steps:
+        - run: npm run startTest
 
 workflows:
   version: 2
